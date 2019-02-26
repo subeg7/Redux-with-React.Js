@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import { connect } from 'react-redux';
 import { addReminder } from '../actions';
-import { bindActionCreators } from 'redux';
+// import { bindActionCreators } from 'redux';
 
 
 class App extends Component{
@@ -20,8 +20,28 @@ class App extends Component{
 
   }
 
+  renderReminders(){
+    const {reminders} = this.props;
+    return(
+      <ul className = "list-group col-sm-4">
+        {
+          reminders.map(reminder =>{
+            return(
+              <li key={reminder.id} className ="list-group-item">
+                <div>{reminder.text}</div>
+              </li>
+            )
+          })
+        }
+      </ul>
+    )
+  }
+
 
   render(){
+
+    console.log("this.props",this.props)
+
     return(
       <div className = "App">
         <div className = "titile">
@@ -36,7 +56,7 @@ class App extends Component{
               onChange={event =>this.setState({text:event.target.value})}
             />
           </div>
-
+          // {this.renderReminders()}
           <button
             type="button"
             className="btn btn-success"
@@ -49,9 +69,17 @@ class App extends Component{
   }
 }
 
+function  mapStateToProps(state){
+  console.log("mapping state to props");
+  console.log("state obtained",state);
+  return{
+    reminder:state
+  }
+}
+
 // function mapDisptachToProps(dispatch){
 //   return bindActionCreators({addReminder},dispatch);
 // }
 // export default App;
 
-export default connect(null,{addReminder}) (App);
+export default connect(mapStateToProps,{addReminder}) (App);
