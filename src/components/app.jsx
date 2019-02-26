@@ -21,11 +21,14 @@ class App extends Component{
   }
 
   renderReminders(){
-    const {reminders} = this.props;
+    let reminders = this.props.reminder;
+    console.log("props@renderReminders",reminders);
+     // reminders=this.props.reminder;
     return(
       <ul className = "list-group col-sm-4">
         {
           reminders.map(reminder =>{
+            console.log("reminder found");
             return(
               <li key={reminder.id} className ="list-group-item">
                 <div>{reminder.text}</div>
@@ -40,7 +43,8 @@ class App extends Component{
 
   render(){
 
-    console.log("this.props",this.props)
+    // this.renderReminders();
+    // console.log("props@main_render",this.props)
 
     return(
       <div className = "App">
@@ -56,12 +60,16 @@ class App extends Component{
               onChange={event =>this.setState({text:event.target.value})}
             />
           </div>
+
           <button
             type="button"
             className="btn btn-success"
             onClick={()=>this.addReminder()}
           >Download Excel File
           </button>
+
+          { this.renderReminders() }
+          
         </div>
       </div>
     )
@@ -69,7 +77,7 @@ class App extends Component{
 }
 
 function  mapStateToProps(state){
-  console.log("mapping state to props");
+  // console.log("mapping state to props");
   console.log("state obtained",state);
   return{
     reminder:state
