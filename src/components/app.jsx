@@ -45,23 +45,22 @@ class App extends Component{
     return(
       <div className = "App">
         <div className = "titile">
-          Reminder pro
+          Todays Transactions
         </div>
 
         <div className="from-inline">
           <div className="form-group">
             <input
               className="form-control"
-              placeholder="i have to..."
+              placeholder="File Name"
               onChange={event =>this.setState({text:event.target.value})}
             />
           </div>
-          // {this.renderReminders()}
           <button
             type="button"
             className="btn btn-success"
             onClick={()=>this.addReminder()}
-          >Add Reminder
+          >Download Excel File
           </button>
         </div>
       </div>

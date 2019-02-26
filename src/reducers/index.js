@@ -5,6 +5,7 @@ const reminder = (action) =>{
     text:action.text,
     id:Math.random()
   }
+
 }
 
 const reminders = ( state=[],action) =>{
@@ -14,8 +15,8 @@ const reminders = ( state=[],action) =>{
     case ADD_REMINDER:
       reminders=[...state, reminder(action)];
       console.log('remiders as state',reminders);
-      return reminder;
-      
+      return reminders;
+      break;
     default:
       return state;
 
