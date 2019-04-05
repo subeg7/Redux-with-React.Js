@@ -1,6 +1,7 @@
 import {ADD_REMINDER,DELETE_REMINDER} from '../constants';
 
 const reminder = (action) =>{
+ 
   return {
     text:action.text,
     id:Math.random()
@@ -15,6 +16,9 @@ const removeById = (state=[],id)=>{
 }
 
 
+const remindAll =()={
+   return "awsome";
+}
 
 const reminders = ( state=[],action) =>{
   let reminders = null;
